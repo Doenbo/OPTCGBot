@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OPTCGBot.Database\OPTCGBot.Database.csproj" />
+    <ProjectReference Include="..\OPTCGBot.Model\OPTCGBot.Model.csproj" />
+    <ProjectReference Include="..\OPTCGBot.ViewModel\OPTCGBot.ViewModel.csproj" />
+  </ItemGroup>
+
+</Project>
