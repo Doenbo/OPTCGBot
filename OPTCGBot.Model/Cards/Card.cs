@@ -1,18 +1,23 @@
-﻿using System;
+﻿using OPTCGBot.Model.Enums;
+using OPTCGBot.Model.Rest;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using OPTCGBot.Model.Enums;
+using System.Xml.Linq;
 using Attribute = OPTCGBot.Model.Enums.Attribute;
+using Color = OPTCGBot.Model.Enums.Color;
 using Type = OPTCGBot.Model.Enums.Type;
 
 namespace OPTCGBot.Model.Cards
 {
     public class Card
     {
-        public Card(int cost, int power, Attribute attribute, int counter, List<string> effects, string trigger, List<Color> color, Category category, string name, int life, List<Type> type, string iD, Rarity rarity, BlockSymbol blockSymbol, int version)
+        public Card(int cost, int power, Attribute attribute, int counter, List<string> effects, string trigger, List<Color> color, Category category, string name, int life, List<Type> type, string iD, Rarity rarity, BlockSymbol blockSymbol, int version, string image)
         {
             Cost = cost;
             Power = power;
@@ -29,6 +34,7 @@ namespace OPTCGBot.Model.Cards
             Rarity = rarity;
             BlockSymbol = blockSymbol;
             Version = version;
+            Image = Image;
         }
 
         public int Cost { get; set; }
@@ -46,5 +52,6 @@ namespace OPTCGBot.Model.Cards
         public Rarity Rarity { get; set; }
         public BlockSymbol BlockSymbol { get; set; }
         public int Version { get; set; }
+        public string Image { get; set; }
     }
 }

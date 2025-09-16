@@ -1,5 +1,6 @@
 ﻿using OPTCGBot.Model.Cards;
 using OPTCGBot.Model.Enums;
+using OPTCGBot.Model.Rest;
 using System.Diagnostics.Metrics;
 using System.Text;
 using System.Windows;
@@ -27,13 +28,16 @@ namespace OPTCGBot.View
         {
             InitializeComponent();
 
+            ICardGet cg = new OPTCGAPIGet();
+            var resp = cg.GetSetCardId("OP01-004");
+
             Card c = new Card(
                 0,
                 5000,
                 Attribute.Strike,
                 0,
                 new List<string>() { "" },
-                null,                             
+                null,
                 new List<Color>() { Color.Red },
                 Category.Leader,
                 "Monkey.D.Luffy",
@@ -42,7 +46,8 @@ namespace OPTCGBot.View
                 "ST01-001",
                 Rarity.L,
                 BlockSymbol.One,
-                1
+                1,
+                ""
             );
         }
     }
