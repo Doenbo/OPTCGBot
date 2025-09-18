@@ -34,7 +34,7 @@ namespace OPTCGBot.Model.Cards
             Rarity = rarity;
             BlockSymbol = blockSymbol;
             Version = version;
-            Image = Image;
+            Image = image;
         }
 
         public int Cost { get; set; }

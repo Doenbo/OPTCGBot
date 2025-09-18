@@ -28,27 +28,27 @@ namespace OPTCGBot.View
         {
             InitializeComponent();
 
-            ICardGet cg = new OPTCGAPIGet();
-            var resp = cg.GetSetCardId("OP01-004");
+            IAPIGet cg1 = new OPTCGAPIGet();
+            var resp1 = cg1.GetSetCardId("OP01-004");
 
-            Card c = new Card(
-                0,
-                5000,
-                Attribute.Strike,
-                0,
-                new List<string>() { "" },
-                null,
-                new List<Color>() { Color.Red },
-                Category.Leader,
-                "Monkey.D.Luffy",
-                5,
-                new List<Type>(),
-                "ST01-001",
-                Rarity.L,
-                BlockSymbol.One,
-                1,
-                ""
-            );
+            //Card c = new Card(
+            //    0,
+            //    5000,
+            //    Attribute.Strike,
+            //    0,
+            //    new List<string>() { "" },
+            //    null,
+            //    new List<Color>() { Color.Red },
+            //    Category.Leader,
+            //    "Monkey.D.Luffy",
+            //    5,
+            //    new List<Type>(),
+            //    "ST01-001",
+            //    Rarity.L,
+            //    BlockSymbol.One,
+            //    1,
+            //    ""
+            //);
         }
     }
 }
