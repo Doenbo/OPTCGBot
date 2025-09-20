@@ -14,7 +14,6 @@ using System.Xml.Linq;
 using static System.Net.WebRequestMethods;
 using Attribute = OPTCGBot.Model.Enums.Attribute;
 using Color = OPTCGBot.Model.Enums.Color;
-using Type = OPTCGBot.Model.Enums.Type;
 
 namespace OPTCGBot.Model.Rest
 {
@@ -50,8 +49,9 @@ namespace OPTCGBot.Model.Rest
             var result = client.GetStringAsync(api).Result;
             var json = JsonConvert.DeserializeObject<List<OPTCGAPICard>>(result);
 
-            var json2 = JsonConvert.DeserializeObject<dynamic>(result);
-            var name = json2[0].card_name;
+            //TODO dynamic?
+            //var json2 = JsonConvert.DeserializeObject<dynamic>(result);
+            //var name = json2[0].card_name;
 
             if (json == null) return null; //TODO?
             return Convert(json);
@@ -126,18 +126,7 @@ namespace OPTCGBot.Model.Rest
                 _ = Enum.TryParse(jard.CardType, out Category category);
                 var name = jard.CardName;
                 _ = int.TryParse(jard.Life, out int life);
-
-
-
-                var jypes = jard.SubTypes.Split(' ');
-                var types = new List<Type>();
-                foreach (var jype in jypes)
-                {
-                    _ = Enum.TryParse(jype, out Type type);
-                    types.Add(type);
-                }
-
-
+                var types = TypeConverter.Convert(jard.SubTypes);
                 var id = jard.CardImageId;
                 _ = Enum.TryParse(jard.Rarity, out Rarity rarity);
                 //TODO blocksymbol

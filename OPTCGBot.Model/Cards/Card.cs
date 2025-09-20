@@ -11,13 +11,12 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Attribute = OPTCGBot.Model.Enums.Attribute;
 using Color = OPTCGBot.Model.Enums.Color;
-using Type = OPTCGBot.Model.Enums.Type;
 
 namespace OPTCGBot.Model.Cards
 {
     public class Card
     {
-        public Card(int cost, int power, Attribute attribute, int counter, List<string> effects, string trigger, List<Color> color, Category category, string name, int life, List<Type> type, string iD, Rarity rarity, BlockSymbol blockSymbol, int version, string image)
+        public Card(int cost, int power, Attribute attribute, int counter, List<string> effects, string trigger, List<Color> colors, Category category, string name, int life, List<string> types, string iD, Rarity rarity, BlockSymbol blockSymbol, int version, string image)
         {
             Cost = cost;
             Power = power;
@@ -25,11 +24,11 @@ namespace OPTCGBot.Model.Cards
             Counter = counter;
             Effects = effects;
             Trigger = trigger;
-            Color = color;
+            Colors = colors;
             Category = category;
             Name = name;
             Life = life;
-            Type = type;
+            Types = types;
             ID = iD;
             Rarity = rarity;
             BlockSymbol = blockSymbol;
@@ -43,11 +42,11 @@ namespace OPTCGBot.Model.Cards
         public int Counter { get; set; }
         public List<string> Effects { get; set; }
         public string Trigger { get; set; }
-        public List<Color> Color { get; set; }
+        public List<Color> Colors { get; set; }
         public Category Category { get; set; }
         public string Name { get; set; }
         public int Life { get; set; }
-        public List<Type> Type { get; set; }
+        public List<string> Types { get; set; }
         public string ID { get; set; }
         public Rarity Rarity { get; set; }
         public BlockSymbol BlockSymbol { get; set; }

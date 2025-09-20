@@ -15,7 +15,6 @@ using System.Xml.Linq;
 using static System.Net.WebRequestMethods;
 using Attribute = OPTCGBot.Model.Enums.Attribute;
 using Color = OPTCGBot.Model.Enums.Color;
-using Type = OPTCGBot.Model.Enums.Type;
 
 namespace OPTCGBot.Model.Rest
 {
@@ -88,17 +87,17 @@ namespace OPTCGBot.Model.Rest
         {
             var cards = new List<Card>();
 
-            foreach (var jard in jards.data)
+            foreach (var jard in jards.Data)
             {
-                _ = int.TryParse(jard.cost, out int cost);
-                _ = int.TryParse(jard.power, out int power);
-                _ = Enum.TryParse(jard.attribute, out Attribute attribute);
-                _ = int.TryParse(jard.counter, out int counter);
+                _ = int.TryParse(jard.Cost, out int cost);
+                _ = int.TryParse(jard.Power, out int power);
+                _ = Enum.TryParse(jard.Attribute, out Attribute attribute);
+                _ = int.TryParse(jard.Counter, out int counter);
 
-                var effects = new List<string>() { jard.effect }; //TODO
-                var trigger = jard.effect; //TODO
+                var effects = new List<string>() { jard.Effect }; //TODO
+                var trigger = jard.Effect; //TODO
 
-                var jolors = jard.color.Split(' ');
+                var jolors = jard.Color.Split(' ');
                 var colors = new List<Color>();
                 foreach (var jolor in jolors)
                 {
@@ -106,27 +105,16 @@ namespace OPTCGBot.Model.Rest
                     colors.Add(color);
                 }
 
-                _ = Enum.TryParse(jard.type, out Category category);
-                var name = jard.name;
+                _ = Enum.TryParse(jard.Type, out Category category);
+                var name = jard.Name;
                 var life = 0;
-
-
-
-                var jypes = jard.Class.Split(' ');
-                var types = new List<Type>();
-                foreach (var jype in jypes)
-                {
-                    _ = Enum.TryParse(jype, out Type type);
-                    types.Add(type);
-                }
-
-
-                var id = jard.id;
-                _ = Enum.TryParse(jard.rarity, out Rarity rarity);
+                var types = TypeConverter.Convert(jard.Class);
+                var id = jard.Id;
+                _ = Enum.TryParse(jard.Rarity, out Rarity rarity);
                 //TODO blocksymbol
                 //TODO version
 
-                var image = jard.image;
+                var image = jard.Image;
 
                 cards.Add(new Card(cost, power, attribute, counter, effects, trigger, colors, category, name, life, types, id, rarity, BlockSymbol.One, 1, image));
             }

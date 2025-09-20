@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using Attribute = OPTCGBot.Model.Enums.Attribute;
 using Color = OPTCGBot.Model.Enums.Color;
-using Type = OPTCGBot.Model.Enums.Type;
 
 namespace OPTCGBot.View
 {
@@ -28,8 +27,11 @@ namespace OPTCGBot.View
         {
             InitializeComponent();
 
-            IAPIGet cg1 = new OPTCGAPIGet();
-            var resp1 = cg1.GetSetCardId("OP01-004");
+            var api = new OPTCGAPIGet();
+            var op01001 = api.GetSetCardId("OP01-001");
+            var op01004 = api.GetSetCardId("OP01-004");
+
+            Console.WriteLine("");   
 
             //Card c = new Card(
             //    0,

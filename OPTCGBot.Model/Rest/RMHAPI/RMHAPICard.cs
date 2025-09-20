@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +9,33 @@ namespace OPTCGBot.Model.Rest
 {
     public class RMHAPICard
     {
-        public string? id { get; set; }
-        public string? code { get; set; }
-        public string? rarity { get; set; }
-        public string? type { get; set; }
-        public string? name { get; set; }
-        public string? cost { get; set; }
-        public string? attribute { get; set; }
-        public string? power { get; set; }
-        public string? counter { get; set; }
-        public string? color { get; set; }
-        public string? Class { get; set; }
-        public string? effect { get; set; }
-        public string? set { get; set; }
-        public string? image { get; set; }
+        [JsonProperty("id")]
+        public required string Id { get; set; }
+        [JsonProperty("code")]
+        public required string Code { get; set; }
+        [JsonProperty("rarity")]
+        public required string Rarity { get; set; }
+        [JsonProperty("type")]
+        public required string Type { get; set; }
+        [JsonProperty("name")]
+        public required string Name { get; set; }
+        [JsonProperty("cost")]
+        public required string Cost { get; set; }
+        [JsonProperty("attribute")]
+        public required string Attribute { get; set; }
+        [JsonProperty("power")]
+        public required string Power { get; set; }
+        [JsonProperty("counter")]
+        public required string Counter { get; set; }
+        [JsonProperty("color")]
+        public required string Color { get; set; }
+        [JsonProperty("Class")]
+        public required string Class { get; set; }
+        [JsonProperty("effect")]
+        public required string Effect { get; set; }
+        [JsonProperty("set")]
+        public required string Set { get; set; }
+        [JsonProperty("image")]
+        public required string Image { get; set; }
     }
 }
