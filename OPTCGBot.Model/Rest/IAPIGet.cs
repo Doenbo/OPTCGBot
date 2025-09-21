@@ -11,13 +11,11 @@ namespace OPTCGBot.Model.Rest
     {
         public List<Card>? GetAllSets();
         public List<Card>? GetAllDecks();
-        public List<Card>? GetSetId(string id);
-        public List<Card>? GetSetCardId(string id);
-        public List<Card>? GetDeckId(string id);
-        public List<Card>? GetDeckCardId(string id);
-        public List<Card>? GetSetIdColor(string id, string color);
-        public List<Card>? GetDeckIdColor(string id, string color);
-        public List<Card>? GetAllStCards();
-        public List<Card>? GetAllSetCards();
+        public List<Card>? GetSetId(string set_id);
+        public List<Card>? GetSetCardId(string card_id);
+        public List<Card>? GetDeckId(string st_id);
+        public List<Card>? GetDeckCardId(string card_id);
+        public List<Card>? GetSetIdColor(string set_id, string card_color);
+        public List<Card>? GetDeckIdColor(string st_id, string card_color);
     }
 }

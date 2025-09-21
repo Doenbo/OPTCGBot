@@ -31,7 +31,11 @@ namespace OPTCGBot.View
             var op01001 = api.GetSetCardId("OP01-001");
             var op01004 = api.GetSetCardId("OP01-004");
 
-            Console.WriteLine("");   
+            var st23001 = api.GetDeckCardId("ST23-001");
+
+            var st23 = api.GetDeckId("ST-23");
+
+            Console.WriteLine("");
 
             //Card c = new Card(
             //    0,

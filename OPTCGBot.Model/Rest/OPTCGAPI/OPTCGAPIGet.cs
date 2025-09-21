@@ -4,6 +4,7 @@ using OPTCGBot.Model.Cards;
 using OPTCGBot.Model.Enums;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Net.Http;
@@ -22,84 +23,23 @@ namespace OPTCGBot.Model.Rest
         private static readonly string apibase = "https://optcgapi.com/api";
         private static readonly HttpClient client = new HttpClient();
 
-        public List<Card>? GetAllSets()
+        public List<Card>? GetAllSets() => GetCards($"{apibase}/AllSets/");
+        public List<Card>? GetAllDecks() => GetCards($"{apibase}/AllDecks/");
+        public List<Card>? GetSetId(string set_id) => GetCards($"{apibase}/sets/{set_id}");
+        public List<Card>? GetSetCardId(string card_id) => GetCards($"{apibase}/sets/card/{card_id}/");
+        public List<Card>? GetDeckId(string st_id) => GetCards($"{apibase}/decks/{st_id}");
+        public List<Card>? GetDeckCardId(string card_id) => GetCards($"{apibase}/decks/card/{card_id}/");
+        public List<Card>? GetSetIdColor(string set_id, string card_color) => GetCards($"{apibase}/sets/{set_id}/{card_color}");
+        public List<Card>? GetDeckIdColor(string deck_id, string card_color) => GetCards($"{apibase}/decks/{deck_id}/{card_color}");
+
+        private List<Card> GetCards(string api)
         {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetAllDecks()
-        {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetSetId(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetSetCardId(string id)
-        {
-            string api = $"{apibase}/sets/card/{id}/";
             var result = client.GetStringAsync(api).Result;
             var json = JsonConvert.DeserializeObject<List<OPTCGAPICard>>(result);
 
-            //TODO dynamic?
-            //var json2 = JsonConvert.DeserializeObject<dynamic>(result);
-            //var name = json2[0].card_name;
-
-            if (json == null) return null; //TODO?
+            if (json == null) throw new NoNullAllowedException();
             return Convert(json);
         }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetDeckId(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetDeckCardId(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetSetIdColor(string id, string color)
-        {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetDeckIdColor(string id, string color)
-        {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetAllStCards()
-        {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
-
-        public List<Card>? GetAllSetCards()
-        {
-            throw new NotImplementedException();
-        }
-
-        //----------------------------------------------------------------------
 
         private List<Card> Convert(List<OPTCGAPICard> jards)
         {
